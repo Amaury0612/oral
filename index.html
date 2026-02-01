@@ -1,119 +1,233 @@
-\documentclass[11pt, a4paper]{article}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expertise Technique - Pompe Eaton PV3-240-2G</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        .page-break { page-break-after: always; }
+        @media print {
+            .no-print { display: none; }
+            body { background: white; }
+            .content-box { box-shadow: none; border: none; }
+        }
+        .technical-card {
+            background: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 leading-relaxed">
 
-% --- UNIVERSAL PREAMBLE BLOCK ---
-\usepackage[a4paper, top=2.5cm, bottom=2.5cm, left=2cm, right=2cm]{geometry}
-\usepackage{fontspec}
-\usepackage[french, bidi=basic, provide=*]{babel}
+    <!-- Navigation Header -->
+    <header class="bg-white border-b sticky top-0 z-50 no-print">
+        <div class="max-w-4xl mx-auto px-6 h-16 flex items-center justify-between">
+            <span class="font-bold text-blue-600 uppercase tracking-widest text-sm">Expertise ATA 29</span>
+            <button onclick="window.print()" class="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-blue-700 transition">
+                Imprimer / PDF
+            </button>
+        </div>
+    </header>
 
-% Assigning fonts
-\babelfont{rm}{Noto Sans}
-\usepackage{amsmath}
-\usepackage{booktabs}
-\usepackage{enumitem}
-\usepackage{titlesec}
-\usepackage{color}
+    <main class="max-w-4xl mx-auto my-12 px-6 bg-white shadow-xl rounded-2xl overflow-hidden content-box">
+        
+        <!-- Page de Garde -->
+        <section class="py-20 text-center border-bPage de Garde">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 mb-6">
+                Rapport de Synthèse Technique<br>
+                <span class="text-blue-600 text-2xl md:text-3xl font-normal uppercase tracking-widest mt-4 block">
+                    Pompe Hydraulique Eaton PV3-240-2G
+                </span>
+            </h1>
+            <p class="text-slate-500 text-lg mb-12 uppercase tracking-widest">Système de Génération Hydraulique Airbus A320</p>
+            <div class="flex justify-center gap-8 text-sm font-semibold text-slate-400">
+                <div>TP N°15.0041</div>
+                <div>MODULE 15</div>
+                <div>ATA 29</div>
+            </div>
+        </section>
 
-% Mise en forme des titres pour une structure plus dense
-\titleformat{\section}{\large\bfseries}{\thesection.}{0.5em}{}
-\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection.}{0.5em}{}
-\titleformat{\subsubsection}{\small\bfseries}{\thesubsubsection.}{0.5em}{}
+        <!-- 1. Introduction -->
+        <section class="py-12 border-b">
+            <h2 class="text-2xl font-bold mb-6 flex items-center">
+                <span class="bg-blue-100 text-blue-600 w-8 h-8 rounded-full flex items-center justify-center mr-3 text-sm">1</span>
+                Introduction : Rôle Stratégique de l'EDP
+            </h2>
+            <p class="mb-4">
+                La pompe hydraulique étudiée est une <strong>Engine Driven Pump (EDP)</strong>. Dans l'architecture de l'Airbus A320, cette pompe est le composant vital du circuit hydraulique principal. Elle est fixée sur l'<strong>Accessory Gear Box (AGB)</strong> du moteur, ce qui signifie qu'elle est entraînée mécaniquement dès que le moteur tourne.
+            </p>
+            <p>
+                Sa mission est de convertir le couple mécanique du réacteur en puissance hydraulique stable de <strong>3000 psi</strong> (environ 207 bars). Sa technologie à cylindrée variable optimise la consommation de carburant en modulant la production selon les besoins réels de l'avion (vol de croisière vs phases d'atterrissage).
+            </p>
+        </section>
 
-\title{
-    \vspace{1cm}
-    \textbf{Dossier d'Expertise Technique Approfondie}\\
-    \large Analyse Morpho-Fonctionnelle et Évaluation des Performances\\
-    \Large \textbf{Pompe Hydraulique Eaton PV3-240-2G (Airbus A320)}
-    \vspace{0.5cm}
-}
-\author{Département Turbomachines - Étude Système Hydraulique ATA 29}
-\date{\today}
+        <!-- 2. Analyse de l'Arbre -->
+        <section class="py-12 border-b">
+            <h2 class="text-2xl font-bold mb-6 flex items-center">
+                <span class="bg-blue-100 text-blue-600 w-8 h-8 rounded-full flex items-center justify-center mr-3 text-sm">2</span>
+                Analyse de l'Arbre et Accouplement
+            </h2>
+            <div class="grid md:grid-cols-2 gap-8 items-center">
+                <div>
+                    <h3 class="font-bold text-slate-900 mb-2">Utilité des cannelures (Splines)</h3>
+                    <p class="text-sm">Elles permettent une liaison "glissière" avec le pignon du moteur. Cela assure la transmission d'un couple élevé tout en absorbant les micro-vibrations et les dilatations thermiques du moteur sans endommager l'intérieur de la pompe.</p>
+                    
+                    <h3 class="font-bold text-slate-900 mt-6 mb-2">Section de rupture (Shear section)</h3>
+                    <p class="text-sm font-medium text-red-600">L'arbre possède une section plus fine calculée pour casser en cas de grippage interne, évitant ainsi de détruire la boîte d'accessoires moteur coûteuse.</p>
+                </div>
+                <div class="bg-slate-100 h-48 rounded-xl flex items-center justify-center border-2 border-dashed border-slate-300">
+                    <span class="text-slate-400 italic">[Dessin de l'arbre cannelé]</span>
+                </div>
+            </div>
+        </section>
 
-\begin{document}
+        <!-- 3. Basse Pression / Impeller -->
+        <section class="py-12 border-b">
+            <h2 class="text-2xl font-bold mb-6 flex items-center">
+                <span class="bg-blue-100 text-blue-600 w-8 h-8 rounded-full flex items-center justify-center mr-3 text-sm">3</span>
+                L'Étage Basse Pression : L'Impeller
+            </h2>
+            <div class="technical-card">
+                <p>À une vitesse de rotation de <strong>3701,76 tr/min</strong>, l'aspiration naturelle ne suffit pas. L'impeller accélère le fluide et augmente sa pression de <strong>20 psi</strong>.</p>
+            </div>
+            <h3 class="font-bold text-blue-600 uppercase text-xs tracking-widest mb-3">Protection contre la Cavitation</h3>
+            <p>Sans ce gavage, des bulles de vide se formeraient à l'entrée des pistons. Lors de la compression brutale en zone HP, ces bulles imploseraient violemment (cavitation), arrachant le métal du barillet. L'impeller garantit un fluide dense et sans gaz.</p>
+        </section>
 
-\maketitle
+        <!-- 4. Le Barillet -->
+        <section class="py-12 border-b">
+            <h2 class="text-2xl font-bold mb-6 flex items-center">
+                <span class="bg-blue-100 text-blue-600 w-8 h-8 rounded-full flex items-center justify-center mr-3 text-sm">4</span>
+                Le Barillet (Bloc-Cylindres)
+            </h2>
+            <p class="mb-6 italic">Le barillet est la pièce massive de couleur dorée visible sur les photos de démontage.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="p-4 border rounded-xl">
+                    <h4 class="font-bold text-slate-900 mb-2 underline">Alliage de Bronze</h4>
+                    <p class="text-sm">Le bronze est un matériau <strong>antifriction</strong>. Comme le barillet tourne contre des pièces fixes en acier, le bronze supporte le glissement à haute vitesse sans échauffement excessif ni grippage sous 3000 psi.</p>
+                </div>
+                <div class="p-4 border rounded-xl">
+                    <h4 class="font-bold text-slate-900 mb-2 underline">Disposition à 9 alésages</h4>
+                    <p class="text-sm">L'utilisation d'un nombre impair (9) est cruciale pour lisser les pulsations de pression, garantissant un débit plus stable et moins de vibrations dans la tuyauterie de l'avion.</p>
+                </div>
+            </div>
+        </section>
 
-\begin{abstract}
-Ce compte rendu présente une analyse exhaustive de la pompe de génération hydraulique EDP (Engine Driven Pump) équipant la flotte Airbus A320. À travers le démontage et l'observation des organes internes, ce document explicite le rôle de chaque composant, les calculs de dimensionnement cinématique, ainsi que les stratégies de régulation de pression asservie. L'étude met en lumière l'ingénierie de précision nécessaire pour garantir une pression de 3000 psi sous des contraintes de rotation et de température extrêmes.
-\end{abstract}
+        <!-- 5. Les Pistons -->
+        <section class="py-12 border-b">
+            <h2 class="text-2xl font-bold mb-6 flex items-center">
+                <span class="bg-blue-100 text-blue-600 w-8 h-8 rounded-full flex items-center justify-center mr-3 text-sm">5</span>
+                Les Pistons et la Tribologie
+            </h2>
+            <div class="flex flex-col md:flex-row gap-8">
+                <div class="flex-1">
+                    <p class="mb-4">Les pistons en acier haute résistance présentent des <strong>joints labyrinthes</strong> (rainures circulaires).</p>
+                    <p class="text-sm bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400">
+                        <strong>À quoi ça sert ?</strong> L'huile s'y loge et crée un film de pression qui "centre" le piston. Cela assure une étanchéité dynamique parfaite sans aucun joint caoutchouc, car aucun élastomère ne tiendrait avec une telle vitesse de frottement.
+                    </p>
+                </div>
+                <div class="w-full md:w-64 bg-slate-900 text-white p-4 rounded-xl text-center">
+                    <div class="text-xs uppercase opacity-60 mb-2">Surface de poussée</div>
+                    <div class="text-2xl font-mono">224,318 mm²</div>
+                    <div class="mt-4 text-xs opacity-60">Diamètre : 16,9 mm</div>
+                </div>
+            </div>
+        </section>
 
-\newpage
+        <!-- 6. Patins et Film Hydrostatique -->
+        <section class="py-12 border-b">
+            <h2 class="text-2xl font-bold mb-6 flex items-center">
+                <span class="bg-blue-100 text-blue-600 w-8 h-8 rounded-full flex items-center justify-center mr-3 text-sm">6</span>
+                Patins et Film Hydrostatique
+            </h2>
+            <div class="technical-card">
+                <p>Un micro-canal traverse le piston et le patin (slipper). Une infime quantité d'huile HP passe par là pour se glisser entre le patin et le plateau cyclique (Yoke).</p>
+            </div>
+            <p class="mt-4">
+                <strong>Effet :</strong> Cela crée un coussin d'huile de quelques microns. Le patin "vole" sur ce coussin et ne touche jamais physiquement le plateau. Cela annule l'usure mécanique malgré les tonnes de pression exercées.
+            </p>
+        </section>
 
-\section{Introduction et Rôle Stratégique du Système}
-La pompe hydraulique étudiée est une \textbf{Eaton PV3-240-2G}. Dans l'architecture ATA 29 de l'Airbus A320, cette pompe est l'organe moteur principal du circuit \textbf{Green} (moteur 1) ou \textbf{Yellow} (moteur 2). 
+        <!-- 7. Régulation -->
+        <section class="py-12 border-b">
+            <h2 class="text-2xl font-bold mb-6 flex items-center">
+                <span class="bg-blue-100 text-blue-600 w-8 h-8 rounded-full flex items-center justify-center mr-3 text-sm">7</span>
+                Mécanisme de Régulation
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="space-y-4">
+                    <div class="bg-slate-50 p-4 rounded-lg">
+                        <h4 class="font-bold text-slate-900">Le Gros Ressort</h4>
+                        <p class="text-sm">Il maintient la pompe inclinée au maximum (plein débit) par défaut. Sécurité : au démarrage, la pompe doit fournir tout son débit immédiatement.</p>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-lg">
+                        <h4 class="font-bold text-slate-900">Piston Actuateur</h4>
+                        <p class="text-sm">Quand la pression atteint 3000 psi, cet actuateur devient assez fort pour écraser le ressort et redresser le plateau vers 0°.</p>
+                    </div>
+                </div>
+                <div class="bg-slate-100 rounded-xl flex items-center justify-center italic text-slate-400">
+                    [Dessin dynamique du plateau oscillant]
+                </div>
+            </div>
+        </section>
 
-\subsection{Fonctions Primaires}
-\begin{itemize}
-    \item \textbf{Conversion Énergétique :} Elle transforme le couple mécanique prélevé sur l'Accessory Gear Box (AGB) en énergie hydraulique (pression $\times$ débit).
-    \item \textbf{Régulation de Puissance :} Grâce à son mécanisme de cylindrée variable, elle ajuste sa consommation de couple moteur au strict besoin des actionneurs avion.
-    \item \textbf{Fiabilité Opérationnelle :} Elle alimente les systèmes critiques tels que les servocommandes de vol (ailerons, profondeur, direction), le déploiement des trains d'atterrissage et le freinage normal.
-\end{itemize}
+        <!-- 8. Glace et Distribution -->
+        <section class="py-12 border-b">
+            <h2 class="text-2xl font-bold mb-6 flex items-center">
+                <span class="bg-blue-100 text-blue-600 w-8 h-8 rounded-full flex items-center justify-center mr-3 text-sm">8</span>
+                Distribution de Flux : La Glace
+            </h2>
+            <p>
+                La séparation aspiration/refoulement se fait par la <strong>glace de distribution</strong> (Valve Plate).
+            </p>
+            <p class="mt-4 text-sm border-l-2 pl-4 italic">
+                Les fentes en forme de croissants ("Haricots") commutent le piston entre l'aspiration et le refoulement. La moindre rayure sur cette surface rodée "miroir" ferait chuter la pression de sortie.
+            </p>
+        </section>
 
-\section{Analyse des Organes d'Admission et de Transmission}
+        <!-- 9. Case Drain -->
+        <section class="py-12 border-b">
+            <h2 class="text-2xl font-bold mb-6 flex items-center">
+                <span class="bg-blue-100 text-blue-600 w-8 h-8 rounded-full flex items-center justify-center mr-3 text-sm">9</span>
+                Le Drainage et la Thermique
+            </h2>
+            <p>
+                Sur le corps, l'orifice bleu <strong>"DRAIN"</strong> évacue l'huile chaude vers le réservoir. Ce flux permanent est le <strong>système de refroidissement</strong> principal. Sans drain, la pompe fonderait par surchauffe en quelques minutes.
+            </p>
+        </section>
 
-\subsection{L'Arbre d'Entraînement Cannelé (Drive Shaft)}
-Le premier élément visible est l'arbre central. Il présente des \textbf{cannelures (splines)} usinées avec précision.
-\paragraph{À quoi ça sert ?} Ces cannelures assurent une liaison mécanique robuste avec le pignon d'entraînement de l'AGB. Elles permettent de transmettre un couple de torsion important tout en autorisant un léger jeu axial. Ce jeu est vital pour compenser les dilatations thermiques entre le moteur et la pompe, ainsi que pour isoler les vibrations mécaniques qui pourraient fragiliser l'étanchéité de l'arbre.
+        <!-- 10. Performances -->
+        <section class="py-12 bg-slate-900 text-white rounded-b-2xl">
+            <div class="px-8">
+                <h2 class="text-2xl font-bold mb-8">Synthèse des Performances</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 text-center">
+                    <div>
+                        <div class="text-blue-400 text-xs uppercase tracking-widest mb-2 font-bold">Cylindrée</div>
+                        <div class="text-3xl font-mono">43 566,96 mm³</div>
+                        <div class="text-xs opacity-50 mt-2">Par tour complet</div>
+                    </div>
+                    <div>
+                        <div class="text-blue-400 text-xs uppercase tracking-widest mb-2 font-bold">Débit Volumique</div>
+                        <div class="text-3xl font-mono">161,27 L/min</div>
+                        <div class="text-xs opacity-50 mt-2">À 3701,76 tr/min</div>
+                    </div>
+                </div>
+                <div class="mt-12 pt-8 border-t border-slate-700 text-center text-sm opacity-50 italic">
+                    La pompe Eaton PV3-240-2G est un chef-d'œuvre de compacité, gérant 3000 psi sans joints classiques, uniquement par précision mécanique.
+                </div>
+            </div>
+        </section>
 
-\subsection{L'Impeller de Gavage (Inlet Boost Impeller)}
-Situé immédiatement après l'orifice d'entrée (\textit{Inlet Port}), on trouve une roue à ailettes centrifuges.
-\paragraph{À quoi ça sert ?} C'est une pompe de gavage interne. À la vitesse de rotation nominale (\textbf{3701,76 tr/min}), cet impeller augmente la pression statique du fluide d'environ 20 psi. 
-\paragraph{Physique de la Cavitation :} Ce boost est essentiel pour prévenir la cavitation. Lors de l'aspiration rapide des pistons, la pression pourrait descendre sous le seuil de tension de vapeur du Skydrol. L'implosion des bulles de gaz ainsi formées arracherait le métal (érosion). L'impeller garantit que les pistons sont toujours remplis de fluide dense, préservant ainsi l'intégrité du barillet.
+    </main>
 
-\section{Le Bloc de Pompage : Barillet et Pistons}
+    <footer class="text-center py-12 text-slate-400 text-sm no-print">
+        <p>© 2024 - Compte Rendu de TP Aéronautique - Maintenance A320</p>
+    </footer>
 
-\subsection{Le Barillet en Bronze (Cylinder Block)}
-Pièce maîtresse du système, le barillet se distingue par l'utilisation d'un \textbf{alliage de bronze} haute performance.
-\paragraph{À quoi ça sert ?} Le bronze est choisi pour ses propriétés tribologiques (antifriction). En tournant contre la glace de distribution en acier, le bronze évite le grippage. Il sert également de dissipateur thermique pour les calories générées par le frottement des pistons. Sa structure multi-alésages (9 trous) permet de lisser les pulsations de pression en sortie.
-
-\subsection{Les Pistons à Joints Labyrinthes}
-Les 9 pistons sont en acier traité au chrome pour une dureté maximale. On observe des \textbf{rainures circulaires} sur leur circonférence.
-\paragraph{À quoi ça sert ?} Ces rainures créent une étanchéité par perte de charge, appelée \textbf{joint labyrinthe}. L'huile se loge dans ces fentes, créant un film de pression qui centre le piston dans son alésage. Cela permet une étanchéité dynamique sans aucun joint caoutchouc (qui ne supporterait pas la friction et la pression), tout en assurant une lubrification constante de la paroi.
-
-\subsection{Les Patins (Slipper Pads) et la Liaison Rotule}
-L'extrémité de chaque piston est une rotule logée dans un patin en bronze.
-\paragraph{À quoi ça sert ?} Le patin possède un petit trou central. Une infime quantité d'huile HP est envoyée via ce canal pour créer un \textbf{film hydrostatique} entre le patin et le plateau cyclique. La force hydraulique "soulève" le patin de quelques microns : le piston glisse sans contact mécanique direct, annulant l'usure malgré la charge de 3000 psi.
-
-\section{Évaluation des Performances Cinématiques}
-L'analyse des dimensions physiques permet de quantifier la capacité de l'organe.
-
-\subsection{Calcul de la Cylindrée Maximale ($V_{tr}$)}
-\begin{itemize}
-    \item \textbf{Diamètre piston ($d$) :} $16,9 \text{ mm}$
-    \item \textbf{Surface ($S$) :} $\pi \times (\frac{16,9}{2})^2 \approx 224,318 \text{ mm}^2$
-    \item \textbf{Course maximale ($C$) :} $21,58 \text{ mm}$
-    \item \textbf{Nombre de pistons ($n$) :} 9
-\end{itemize}
-La cylindrée par tour est donnée par : $V_{tr} = n \times S \times C = 9 \times 224,318 \times 21,58 \approx \mathbf{43566,96 \text{ mm}^3/\text{tr}}$.
-
-\subsection{Débit Volumique Opérationnel ($Q_v$)}
-À la vitesse d'entraînement moteur de \textbf{3701,76 tr/min}, le débit théorique est de :
-$$Q_v = V_{tr} \times \omega = 43566,96 \times 3701,76 \approx \mathbf{161\,274\,423,7 \text{ mm}^3/\text{min}} \approx \mathbf{161,27 \text{ L/min}}.$$
-
-\section{Architecture de la Régulation de Pression}
-
-\subsection{Le Plateau Cyclique Pivotant (Yoke)}
-Le plateau est la surface de réaction sur laquelle s'appuient les pistons.
-\paragraph{À quoi ça sert ?} Son inclinaison définit la course des pistons. S'il est très incliné, la pompe est à plein débit. S'il est perpendiculaire à l'axe (angle $0^\circ$), les pistons ne font plus de va-et-vient dans le barillet : le débit est nul.
-
-\subsection{Le Gros Ressort de Rappel (3000 psi)}
-Visible lors du démontage, c'est un ressort hélicoïdal de forte section.
-\paragraph{À quoi ça sert ?} Il maintient la pompe en position "plein débit" par défaut. C'est une sécurité aéronautique : en cas de perte de signal de contrôle, la pompe revient mécaniquement à son débit maximum pour garantir la disponibilité des commandes de vol.
-
-\subsection{Le Compensateur de Pression (Compensator Valve)}
-Ce tiroir hydraulique compare la pression de sortie à la force du ressort.
-\paragraph{À quoi ça sert ?} C'est le "cerveau" de la pompe. Quand la pression atteint 2900 psi, il commence à dévier l'huile vers l'actuateur. À 3000 psi, l'actuateur écrase le ressort et réduit l'angle du plateau. La pompe cesse de débiter mais garde le circuit sous tension, économisant ainsi des dizaines de chevaux-vapeur au moteur.
-
-\section{Distribution et Drainage du Carter}
-
-\subsection{La Glace de Distribution (Valve Plate)}
-C'est le disque fixe avec deux fentes en forme de haricots, situé à l'arrière du barillet.
-\paragraph{À quoi ça sert ?} Elle assure la commutation hydraulique. En tournant, chaque piston passe devant le haricot d'aspiration (il recule et se remplit), puis devant le haricot de refoulement (il avance et comprime l'huile). La finition miroir de cette pièce est critique pour l'étanchéité HP.
-
-\subsection{Le Case Drain (Orifice de Drainage)}
-On remarque un orifice noté "DRAIN" sur le carter extérieur.
-\paragraph{À quoi ça sert ?} Toute l'huile de fuite (celle servant à lubrifier les patins et les barillets) remplit le corps de pompe. Si cette huile restait emprisonnée, elle monterait en température par friction. Le Case Drain permet à cette huile de s'échapper vers le réservoir, emportant avec elle les calories excédentaires, agissant ainsi comme un circuit de refroidissement.
-
-\section{Conclusion Technique}
-L'étude de la pompe Eaton PV3-240-2G met en évidence une intégration remarquable de solutions mécaniques et hydrauliques. De l'étage de gavage protégeant contre la cavitation à la régulation hydrostatique des patins de pistons, chaque détail géométrique observé lors du TP répond à une exigence de fiabilité et de performance. Le passage d'un mode plein débit à une cylindrée nulle permet à l'Airbus A320 de disposer d'une puissance hydraulique colossale tout en optimisant son bilan énergétique global.
-
-\end{document}
+</body>
+</html>
