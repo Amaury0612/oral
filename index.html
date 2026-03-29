@@ -1,116 +1,189 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Réponses Sujet BTS Aéronautique - Maintenance</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Airbus Presentation - Professional Aerospace Overview</title>
     <style>
-        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: auto; padding: 20px; }
-        h1 { color: #003366; border-bottom: 2px solid #003366; }
-        h2 { color: #005599; margin-top: 30px; }
-        .question { font-weight: bold; color: #d32f2f; }
-        .reponse { margin-bottom: 20px; }
-        table { width: 100%; border-collapse: collapse; margin: 10px 0; }
-        th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
-        th { background-color: #f4f4f4; }
-        .note { background-color: #fff3cd; border-left: 5px solid #ffeeba; padding: 10px; margin: 10px 0; }
+        :root {
+            --bg-dark: #050a18;
+            --card-bg: #0b1426;
+            --airbus-blue: #00205b;
+            --accent-blue: #005587;
+            --text-main: #ffffff;
+            --text-dim: #b0b0b0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        #pres-container {
+            width: 90%;
+            max-width: 1000px;
+            background: var(--card-bg);
+            border: 1px solid #1a263f;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.7);
+            text-align: center;
+        }
+
+        h1 {
+            font-weight: 300;
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            border-left: 5px solid var(--accent-blue);
+            padding-left: 15px;
+            text-align: left;
+            min-height: 50px;
+            display: flex;
+            align-items: center;
+            text-shadow: 0 0 10px rgba(255,255,255,0.1);
+        }
+
+        .img-frame {
+            width: 100%;
+            height: 480px;
+            background-color: #000;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 25px;
+            border: 1px solid #1f2d4d;
+        }
+
+        .img-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .nav-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #1f2d4d;
+            padding-top: 20px;
+        }
+
+        .counter {
+            font-family: monospace;
+            color: var(--text-dim);
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        button {
+            background-color: transparent;
+            color: var(--text-main);
+            border: 1px solid var(--accent-blue);
+            padding: 10px 30px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            transition: all 0.2s ease;
+        }
+
+        button:hover:not(:disabled) {
+            background-color: var(--accent-blue);
+            box-shadow: 0 0 15px rgba(0, 85, 135, 0.5);
+        }
+
+        button:disabled {
+            border-color: #2a3b5a;
+            color: #2a3b5a;
+            cursor: not-allowed;
+        }
     </style>
 </head>
 <body>
 
-    <h1>Examen : Étude de processus de maintenance d'aéronefs</h1>
-
-    <h2>Partie 1 : Flotte A320 Air France</h2>
+<div id="pres-container">
+    <h1 id="slide-title">Loading...</h1>
     
-    <div class="reponse">
-        <p><span class="question">Question 1.1 : Qu'est-ce que le MSN d'un avion ?</span><br>
-        Le <strong>MSN (Manufacturer Serial Number)</strong> est le numéro de série unique attribué par le constructeur (Airbus) à chaque cellule d'avion lors de sa fabrication pour l'identifier de manière certaine tout au long de sa vie[cite: 78].</p>
+    <div class="img-frame">
+        <img id="slide-img" src="" alt="Presentation Visual">
     </div>
 
-    <div class="reponse">
-        <p><span class="question">Question 1.2 : Qu'est-ce qu'un type d'avion ?</span><br>
-        Le type désigne la famille générique de l'appareil certifiée par les autorités (ex: Famille A320)[cite: 9].</p>
+    <div class="nav-bar">
+        <button id="prevBtn" onclick="moveSlide(-1)">Previous</button>
+        <div class="counter" id="slide-num">1 / 6</div>
+        <button id="nextBtn" onclick="moveSlide(1)">Next</button>
     </div>
+</div>
 
-    <div class="reponse">
-        <p><span class="question">Question 1.3 : Qu'est-ce qu'un modèle d'avion ?</span><br>
-        Le modèle est une sous-catégorie spécifique au sein d'un type, se distinguant par ses dimensions ou capacités (ex: A318, A319, A320 ou A321)[cite: 9, 36].</p>
-    </div>
+<script>
+    const slides = [
+        // SUBJECT 1 : QLB (Quality Log Book)
+        {
+            title: "QLB: Digital Precision & Reporting",
+            img: "https://www.airbus.com/sites/g/files/jlcbta136/files/styles/w1200h675/public/2024-04/professionals_4images.jpg?h=0e6c0790&itok=HdJOVpAt"
+        },
+        {
+            title: "QLB: Validating Quality in Real-Time",
+            img: "https://www.airbus.com/sites/g/files/jlcbta136/files/styles/w750h1140/public/2024-03/saru_paid_media_production_manufacturing_2022.jpg?h=cf932d48&itok=ceBjOFDy"
+        },
+        // SUBJECT 2 : ZEROe (Hydrogen)
+        {
+            title: "ZEROe: Shaping the 2035 Hydrogen Future",
+            // RESTAURATION du lien original transmis par l'utilisateur
+            img: "https://media.lesechos.com/api/v1/images/view/654cc2c64c6ee00a9476218a/1280x720/0903343902189-web-tete.jpg"
+        },
+        {
+            title: "ZEROe: The Challenge of Global Infrastructure",
+            img: "https://www.internationalairportreview.com/wp-content/uploads/Hydrogen.jpg" 
+        },
+        // SUBJECT 3 : 2025 (State of the Industry)
+        {
+            title: "2025: Strengthening Strategic Partnerships",
+            img: "https://innovations.fr/wp-content/uploads/2025/03/airbus-signe-un-coup-majeur-avec-un-client-americain.jpeg"
+        },
+        {
+            title: "2025: Logistics & Supply Chain Fragility",
+            img: "https://www.leparisien.fr/resizer/9e62zQ-ss_JhkfbGitGaz8WpjxM=/932x582/cloudfront-eu-central-1.images.arcpublishing.com/leparisien/X2JL2OYWZRER7CSD7MIDWEAQCE.jpg"
+        }
+    ];
 
-    <div class="reponse">
-        <p><span class="question">Question 1.4 : Qu'est-ce que la version d'un avion ?</span><br>
-        La version définit une configuration précise de l'appareil, souvent liée à la motorisation ou à des options spécifiques (ex: A320neo avec moteurs LEAP-1A)[cite: 40, 45].</p>
-    </div>
+    let currentIndex = 0;
 
-    <div class="reponse">
-        <p><span class="question">Question 1.6 : Décrypter l'immatriculation d'un avion (F-GMZA) :</span><br>
-        <ul>
-            <li><strong>F</strong> : Préfixe de la France (pays d'enregistrement)[cite: 74].</li>
-            <li><strong>GMZA</strong> : Marques d'immatriculation spécifiques à l'aéronef exploitées par la compagnie.</li>
-        </ul>
-    </p>
-    </div>
+    function renderSlide() {
+        const slide = slides[currentIndex];
+        const img = document.getElementById('slide-img');
+        
+        // Simple fade effect
+        img.style.opacity = 0;
+        
+        setTimeout(() => {
+            document.getElementById('slide-title').innerText = slide.title;
+            img.src = slide.img;
+            document.getElementById('slide-num').innerText = (currentIndex + 1) + " / " + slides.length;
+            img.style.opacity = 1;
+        }, 150);
 
-    <h2>Partie 2 & 3 : Réglementation et Applicabilité</h2>
-    
-    <div class="reponse">
-        <p><span class="question">Question 3.2 : Que se passe-t-il si un avion ne fait pas les travaux dans les délais exigés ?</span><br>
-        Si les travaux d'une <strong>AD (Airworthiness Directive)</strong> ne sont pas effectués avant la date d'échéance ou la limite de cycles/heures, le certificat de navigabilité de l'avion devient invalide. L'appareil est alors <strong>interdit de vol (AOG)</strong> jusqu'à mise en conformité[cite: 89].</p>
-    </div>
+        // Update button states
+        document.getElementById('prevBtn').disabled = (currentIndex === 0);
+        document.getElementById('nextBtn').disabled = (currentIndex === slides.length - 1);
+    }
 
-    <h2>Partie 4 : Étude spécifique de l'AD 2020-0174</h2>
+    function moveSlide(direction) {
+        currentIndex += direction;
+        renderSlide();
+    }
 
-    <div class="reponse">
-        <p><span class="question">Question 4.1 : Qu'est-ce qu'une AD ?</span><br>
-        Une <strong>AD (Airworthiness Directive)</strong>, ou Consigne de Navigabilité (CN) en français, est un document obligatoire émis par une autorité de sécurité aérienne (comme l'EASA) pour corriger une situation d'insécurité sur un produit aéronautique[cite: 48, 95].</p>
-    </div>
-
-    <div class="reponse">
-        <p><span class="question">Question 4.2 : Cette AD est-elle obligatoire ?</span><br>
-        <strong>Oui</strong>, toutes les AD publiées par l'EASA revêtent un caractère impératif pour maintenir la navigabilité de l'aéronef[cite: 57].</p>
-    </div>
-
-    <div class="reponse">
-        <p><span class="question">Question 4.3 (Note : notée 4.2 dans le sujet) : Quel ATA est concerné par cette AD ?</span><br>
-        L'AD 2020-0174 concerne le train d'atterrissage principal (MLG), elle relève donc de l'<strong>ATA 32</strong>[cite: 58].</p>
-    </div>
-
-    <div class="reponse">
-        <p><span class="question">Question 4.4 : Quels systèmes sont impactés par cette AD ?</span><br>
-        Le système impacté est le <strong>Train d'Atterrissage Principal (Main Landing Gear - MLG)</strong>, spécifiquement les jambes de train et les tubes d'amortisseurs[cite: 58, 59].</p>
-    </div>
-
-    <div class="reponse">
-        <p><span class="question">Question 4.6 : Y-a-t-il une ou plusieurs AD précédentes dont celle-ci est issue ?</span><br>
-        <em>Note : Selon les registres EASA, l'AD 2020-0174 remplace (supersedes) l'AD 2018-0136 datée du 26 juin 2018.</em></p>
-    </div>
-
-    <h2>Partie 5 : Étude de la documentation Airbus</h2>
-
-    <div class="reponse">
-        <p><span class="question">Question 5.1 : Part numbers des pièces pour les 2 côtés (A318/319/320) :</span><br>
-        D'après le tableau fourni[cite: 59], pour les modèles A318, A319 et A320, les P/N des tubes coulissants (MLG sliding tube) peuvent être :
-        <table>
-            <tr>
-                <th>Composant</th>
-                <th>Part Numbers (P/N) disponibles</th>
-            </tr>
-            <tr>
-                <td>MLG Sliding Tube</td>
-                <td>201260302, 201260324, 201471300, 201471302, 201471301, 201471304, 201471307 [cite: 59]</td>
-            </tr>
-        </table>
-        Les pièces sont généralement symétriques ou possèdent des P/N distincts pour Gauche (LH) et Droite (RH) selon le catalogue de pièces (IPC).
-        </p>
-    </div>
-
-    <div class="reponse">
-        <p><span class="question">Question 5.2 : Quel document doit impérativement accompagner les pièces détachées ?</span><br>
-        Chaque pièce aéronautique doit être accompagnée d'un certificat de libération autorisée, généralement l'<strong>EASA Form 1</strong> (pour l'Europe) ou un document équivalent (FAA 8130-3), garantissant sa navigabilité et sa traçabilité[cite: 100].</p>
-    </div>
-
-    <div class="note">
-        <strong>Note pour le travail Excel (Q1.7 & 2.1) :</strong> Vous devez utiliser le site <em>Airfleets</em> pour extraire la liste des 116 avions et le site de l'<em>EASA</em> pour les AD parues après le 01 Août 2024[cite: 63, 77, 81].
-    </div>
+    // Initialize first slide on load
+    window.onload = renderSlide;
+</script>
 
 </body>
-</html> 
+</html>
