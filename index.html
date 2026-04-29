@@ -3,191 +3,266 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Airbus Presentation - Oral Support</title>
+    <title>Airbus Strategy Presentation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --airbus-blue: #00205b;
-            --accent-blue: #00a3e0;
-            --text-light: #f4f4f4;
-            --bg-dark: #0a0a0a;
+            --accent-blue: #005587;
+            --light-grey: #f8f9fa;
+            --text-dark: #1a1a1a;
+            --shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
 
+        * { box-sizing: border-box; }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg-dark);
-            color: var(--text-light);
+            font-family: 'Inter', sans-serif;
+            background-color: #e9ecef;
+            color: var(--text-dark);
             margin: 0;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100vh;
-            overflow: hidden;
+            min-height: 100vh;
         }
 
-        /* Slide Container */
-        .presentation-container {
-            width: 80%;
-            height: 70vh;
-            background: #111;
-            border: 2px solid #333;
-            border-radius: 15px;
+        /* Barre supérieure pro */
+        .top-bar {
+            width: 100%;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            z-index: 100;
+        }
+
+        .logo-text {
+            font-weight: 700;
+            color: var(--airbus-blue);
+            letter-spacing: 1px;
+        }
+
+        /* Container de la Slide - Format 16:9 responsive */
+        .slide-container {
+            width: 90%;
+            max-width: 1000px; /* Taille optimale laptop */
+            aspect-ratio: 16 / 9; /* Ratio pro */
+            background: white;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            align-items: center;
             padding: 40px;
-            text-align: center;
-            position: relative;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            margin-top: 60px;
         }
 
         .slide {
             display: none;
-            width: 100%;
+            height: 100%;
+            flex-direction: column;
         }
 
         .slide.active {
-            display: block;
-            animation: fadeIn 0.5s ease;
+            display: flex;
+            animation: fadeIn 0.4s ease-out;
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
+            from { opacity: 0; transform: translateY(5px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        h1 {
-            font-size: 3.5rem;
-            color: var(--accent-blue);
+        /* Typographie Slides */
+        .category {
+            font-size: 0.9rem;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 30px;
+            color: var(--accent-blue);
+            font-weight: 600;
+            margin-bottom: 10px;
         }
 
-        .image-placeholder {
-            width: 100%;
-            height: 300px;
-            border: 2px dashed #444;
+        h1 {
+            font-size: 2.2rem;
+            margin: 0;
+            line-height: 1.2;
+            color: var(--airbus-blue);
+            max-width: 90%;
+        }
+
+        /* Zone Image adaptée */
+        .image-box {
+            flex-grow: 1;
+            margin-top: 25px;
+            background-color: #f1f3f5;
+            border-radius: 6px;
+            border: 1px solid #dee2e6;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-top: 20px;
-            color: #666;
-            font-style: italic;
-            border-radius: 10px;
+            overflow: hidden;
         }
 
-        /* Navigation Buttons */
-        .controls {
-            margin-top: 30px;
+        .image-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* L'image remplira proprement le cadre */
+        }
+
+        .placeholder-text {
+            color: #adb5bd;
+            font-size: 0.9rem;
+            text-transform: italic;
+        }
+
+        /* Boutons de navigation */
+        .nav-controls {
+            margin-top: 20px;
             display: flex;
+            align-items: center;
             gap: 20px;
         }
 
-        button {
-            padding: 12px 25px;
-            font-size: 1rem;
-            cursor: pointer;
+        .btn {
+            padding: 10px 20px;
             border: none;
-            border-radius: 5px;
-            background-color: var(--airbus-blue);
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.2s;
+            font-size: 0.9rem;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--airbus-blue);
+            color: var(--airbus-blue);
+        }
+
+        .btn-outline:hover {
+            background: #f0f4f8;
+        }
+
+        .btn-pdf {
+            background: var(--airbus-blue);
             color: white;
-            transition: 0.3s;
         }
 
-        button:hover {
-            background-color: var(--accent-blue);
+        .btn-pdf:hover {
+            background: var(--accent-blue);
         }
 
-        .btn-download {
-            background-color: #27ae60;
-            position: absolute;
-            top: 20px;
-            right: 20px;
+        .slide-number {
+            font-size: 0.9rem;
+            color: #6c757d;
         }
 
-        /* PDF Export Styling */
+        /* Mode Impression / PDF */
         @media print {
-            body { background: white; color: black; }
-            .controls, .btn-download { display: none; }
-            .presentation-container { 
-                width: 100%; height: auto; border: none; box-shadow: none;
+            body { background: white; }
+            .top-bar, .nav-controls { display: none; }
+            .slide-container { 
+                box-shadow: none; border: none; width: 100%; max-width: none; 
+                margin: 0; aspect-ratio: none; padding: 20px;
             }
-            .slide { display: block !important; page-break-after: always; }
-            h1 { color: #00205b; }
+            .slide { display: block !important; page-break-after: always; height: auto; margin-bottom: 50px; }
+            .image-box { height: 400px; }
         }
     </style>
 </head>
 <body>
 
-    <button class="btn-download" onclick="window.print()">Download PDF</button>
+    <div class="top-bar">
+        <div class="logo-text">AIRBUS | <span style="font-weight: 300;">Operational Review</span></div>
+        <button class="btn btn-pdf" onclick="window.print()">Download PDF</button>
+    </div>
 
-    <div class="presentation-container" id="presentation">
+    <div class="slide-container">
         
         <div class="slide active">
-            <p style="color: grey;">Technical Document: Annexe 1</p>
+            <div class="category">Technical Document: Annexe 1</div>
             <h1>Quality Log Book: <br>Technical & Commercial Interface</h1>
-            <div class="image-placeholder">[IMAGE: QLB INTERFACE OR AIRCRAFT INSPECTION]</div>
+            <div class="image-box">
+                <span class="placeholder-text">[Insert QLB Interface Image Here]</span>
+            </div>
         </div>
 
         <div class="slide">
-            <p style="color: grey;">Article 1: ZEROe Project</p>
-            <h1>Target 2035: <br>The Zero-Emission Ambition</h1>
-            <div class="image-placeholder">[IMAGE: HYDROGEN PLANE CONCEPT]</div>
+            <div class="category">Hydrogen Strategy: ZEROe Project</div>
+            <h1>The 2035 Goal: <br>Launching Zero-Emission Aviation</h1>
+            <div class="image-box">
+                <span class="placeholder-text">[Insert Hydrogen Plane Image Here]</span>
+            </div>
         </div>
 
         <div class="slide">
-            <p style="color: grey;">Article 1: ZEROe Project</p>
-            <h1>Three Designs <br>for Versatile Aviation</h1>
-            <div class="image-placeholder">[IMAGE: THE 3 DESIGN CONCEPTS]</div>
+            <div class="category">Hydrogen Strategy: ZEROe Project</div>
+            <h1>Design Versatility: <br>Three Concepts for Diverse Needs</h1>
+            <div class="image-box">
+                <span class="placeholder-text">[Insert 3 Design Concepts Image Here]</span>
+            </div>
         </div>
 
         <div class="slide">
-            <p style="color: grey;">Article 1: ZEROe Project</p>
-            <h1>A Global <br>Ecosystem Challenge</h1>
-            <div class="image-placeholder">[IMAGE: AIRPORT INFRASTRUCTURE]</div>
+            <div class="category">Hydrogen Strategy: ZEROe Project</div>
+            <h1>The Ecosystem Shift: <br>Infrastructure & Green Hydrogen</h1>
+            <div class="image-box">
+                <span class="placeholder-text">[Insert Airport/Infrastructure Image Here]</span>
+            </div>
         </div>
 
         <div class="slide">
-            <p style="color: grey;">Article 2: 2025 Market Reality</p>
-            <h1>Supply Chain <br>Fragility & Quality Issues</h1>
-            <div class="image-placeholder">[IMAGE: ASSEMBLY LINE OR FUSELAGE PANELS]</div>
+            <div class="category">2025 Market Reality: Annexe 3</div>
+            <h1>Supplier Quality Crises: <br>The A320 Fuselage Bottleneck</h1>
+            <div class="image-box">
+                <span class="placeholder-text">[Insert Assembly Line Image Here]</span>
+            </div>
         </div>
 
         <div class="slide">
-            <p style="color: grey;">Article 2: 2025 Market Reality</p>
-            <h1>Massive Operational <br>Disruption Impact</h1>
-            <div class="image-placeholder">[IMAGE: LOGISTICS OR DELAY CHART]</div>
+            <div class="category">2025 Market Reality: Annexe 3</div>
+            <h1>Operational Ripple Effect: <br>Managing Global Delays</h1>
+            <div class="image-box">
+                <span class="placeholder-text">[Insert Logistics/Delay Graph Here]</span>
+            </div>
         </div>
 
         <div class="slide">
-            <p style="color: grey;">Article 2: 2025 Market Reality</p>
-            <h1>Execution vs. Demand: <br>The Industrial Paradox</h1>
-            <div class="image-placeholder">[IMAGE: AIRBUS BACKLOG OR DELIVERY STATS]</div>
+            <div class="category">2025 Market Reality: Annexe 3</div>
+            <h1>The Industrial Paradox: <br>High Demand vs. Execution Risks</h1>
+            <div class="image-box">
+                <span class="placeholder-text">[Insert Delivery Stats Image Here]</span>
+            </div>
         </div>
 
     </div>
 
-    <div class="controls">
-        <button onclick="changeSlide(-1)">Previous</button>
-        <span id="slide-number">Slide 1 / 7</span>
-        <button onclick="changeSlide(1)">Next</button>
+    <div class="nav-controls">
+        <button class="btn btn-outline" onclick="changeSlide(-1)">Previous</button>
+        <div class="slide-number" id="counter">Slide 1 / 7</div>
+        <button class="btn btn-outline" onclick="changeSlide(1)">Next</button>
     </div>
 
     <script>
         let currentSlide = 0;
         const slides = document.querySelectorAll('.slide');
-        const slideNumberText = document.getElementById('slide-number');
+        const counter = document.getElementById('counter');
 
-        function changeSlide(direction) {
+        function changeSlide(step) {
             slides[currentSlide].classList.remove('active');
-            currentSlide = (currentSlide + direction + slides.length) % slides.length;
+            currentSlide = (currentSlide + step + slides.length) % slides.length;
             slides[currentSlide].classList.add('active');
-            slideNumberText.innerText = `Slide ${currentSlide + 1} / ${slides.length}`;
+            counter.innerText = `Slide ${currentSlide + 1} / ${slides.length}`;
         }
 
-        // Keyboard navigation
+        // Navigation clavier
         document.addEventListener('keydown', (e) => {
             if (e.key === "ArrowRight") changeSlide(1);
             if (e.key === "ArrowLeft") changeSlide(-1);
